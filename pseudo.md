@@ -1,9 +1,9 @@
 1. Create a .gitignore file and add node_modules to it.
 
 2. Create a server.js file that will swerve up the application.
-    - Import all your required dependencies.
-    - Initialize the express app.
-    - set up the port that the server will listen on. (note: Heroku will set this up for you when you deploy.)
+    - Import all your required dependencies.X
+    - Initialize the express app.X
+    - set up the port that the server will listen on. X(note: Heroku will set this up for you when you deploy.)X
     - set body parsing, static middleware, route middleware.
     - start the server.
 
