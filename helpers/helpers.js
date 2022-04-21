@@ -30,4 +30,4 @@ function uuid () {
 
 
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+module.exports = { readFromFile, writeToFile, readAndAppend, uuid };

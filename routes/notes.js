@@ -1,5 +1,5 @@
 const notes = require('express').Router();
-const { readFromFile, writeToFile, readAndAppend  } = require('../helpers/helpers')
+const { readFromFile, writeToFile, readAndAppend, uuid  } = require('../helpers/helpers')
 
 //get rout retrieving the notes
 notes.get('/', (req, res) =>
@@ -12,10 +12,13 @@ notes.post('/', (req, res) => {
 
     const newNote = {
         title,
-        text
+        text,
+        id: uuid()
     }
 
     readAndAppend(newNote, './db/db.json');
+    res.status(201).json(newNote);
+
 });
 
 module.exports = notes;
