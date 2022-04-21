@@ -1,5 +1,6 @@
 const fs = require('fs');
 const util = require('util');
+const notes = require('../routes/notes');
 
 //Use Util to turn readFile into a promise.
 const readFromFile = util.promisify(fs.readFile);
@@ -28,6 +29,18 @@ function uuid () {
     .substring(1);
 }
 
+function deleteNote(id) {
+    readFromFile('db/db.json', 'utf8')
+    .then((data) => {
+        let notes = JSON.parse(data);
+        for (let i = 0; i < notes.length; i++) {
+            if (notes[i].id  === id) {
+                var noteIndex = i;
+            }
+        }
+        notes.splice(noteIndex, 1);
+        writeToFile('db/db.json', notes);
+    });
+}
 
-
-module.exports = { readFromFile, writeToFile, readAndAppend, uuid };
+module.exports = { readFromFile, writeToFile, readAndAppend, uuid, deleteNote };

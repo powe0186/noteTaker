@@ -1,5 +1,5 @@
 const notes = require('express').Router();
-const { readFromFile, writeToFile, readAndAppend, uuid  } = require('../helpers/helpers')
+const { readFromFile, writeToFile, readAndAppend, uuid, deleteNote  } = require('../helpers/helpers')
 
 //get rout retrieving the notes
 notes.get('/', (req, res) =>
@@ -18,6 +18,13 @@ notes.post('/', (req, res) => {
 
     readAndAppend(newNote, './db/db.json');
     res.status(201).json(newNote);
+
+});
+
+notes.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    deleteNote(id);
+    res.json('Note Removed');
 
 });
 
