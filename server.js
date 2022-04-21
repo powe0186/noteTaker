@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-const { readFromFile } = require('./helpers/helpers');
+const { readFromFile, writeToFile, readAndAppend } = require('./helpers/helpers');
 app.use('/api', api);
 
 //Don't need because of line 7, but what the heck!
